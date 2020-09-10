@@ -1,0 +1,8 @@
+﻿Group: Exchange rate providers
+FriendlyName: PrivatBank exchange rate provider
+SystemName: CurrencyExchange.PrivatBank
+Version: 1.0
+SupportedVersions: 4.70
+Author: Illia Maier
+DisplayOrder: 1
+FileName: Grand.Plugin.ExchangeRate.PrivatBank.dll
