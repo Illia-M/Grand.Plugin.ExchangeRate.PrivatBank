@@ -1,0 +1,54 @@
+name: .NET Core
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  release:
+    types:
+      - created
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+    - name: Pull GrandNode
+      run: |
+        mkdir grandnode
+        git clone https://github.com/grandnode/grandnode.git --branch Release-4.70 --single-branch grandnode
+        mkdir grandnode/Plugins/Grand.Plugin.ExchangeRate.PrivatBank
+    - name: List pulled GrandNode files
+      run: |
+        ls -la .
+        ls -la grandnode
+    - uses: actions/checkout@v2
+      with:
+        path: 'grandnode/Plugins/Grand.Plugin.ExchangeRate.PrivatBank'
+    - name: List sources files
+      run: |
+        ls -la grandnode/Plugins/Grand.Plugin.ExchangeRate.PrivatBank
+    - name: Install dependencies
+      working-directory: grandnode/Plugins/Grand.Plugin.ExchangeRate.PrivatBank
+      run: dotnet restore
+    - name: Build
+      working-directory: grandnode/Plugins/Grand.Plugin.ExchangeRate.PrivatBank
+      run: dotnet build --configuration Release --no-restore
+    - name: List release files
+      run: ls -la grandnode/Grand.Web/Plugins/ExchangeRate.PrivatBank
+    - name: Test
+#      working-directory: grandnode/Plugins/Grand.Plugin.ExchangeRate.PrivatBank
+#      run: dotnet test --no-restore --verbosity normal
+      run: echo "To be done"
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: GrandNode-ExchangeRate-PrivatBank
+        path: grandnode/Grand.Web/Plugins/ExchangeRate.PrivatBank*
+        if-no-files-found: error
