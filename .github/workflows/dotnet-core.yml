@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ master ]
 
+  release:
+    types:
+      - created
 jobs:
   build:
 
@@ -43,18 +46,9 @@ jobs:
 #      working-directory: grandnode/Plugins/Grand.Plugin.ExchangeRate.PrivatBank
 #      run: dotnet test --no-restore --verbosity normal
       run: echo "To be done"
-    - name: Zip Release
-      uses: TheDoctor0/zip-release@0.4.1
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
       with:
-        filename: 'GrandNode-ExchangeRate-PrivatBank.zip'
-        directory: 'grandnode/Grand.Web/Plugins/ExchangeRate.PrivatBank'
-        exclusions: '/refs/*'
-    - name: Create release
-      uses: djnicholson/release-action@v2.4
-      if: github.ref == 'master'
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        release-name: 'Latest rolling build'
-#        tag-name: 'v1.0'
-        asset-name: 'GrandNode-ExchangeRate-PrivatBank.zip'
-        file: 'grandnode/Grand.Web/Plugins/ExchangeRate.PrivatBank/GrandNode-ExchangeRate-PrivatBank.zip'
+        name: GrandNode-ExchangeRate-PrivatBank
+        path: grandnode/Grand.Web/Plugins/ExchangeRate.PrivatBank*
+        if-no-files-found: error
