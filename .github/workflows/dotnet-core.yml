@@ -46,19 +46,19 @@ jobs:
 #      working-directory: grandnode/Plugins/Grand.Plugin.ExchangeRate.PrivatBank
 #      run: dotnet test --no-restore --verbosity normal
       run: echo "To be done"
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: GrandNode-ExchangeRate-PrivatBank
+        path: 'grandnode/Grand.Web/Plugins/ExchangeRate.PrivatBank'
     - name: Zip Release
       uses: TheDoctor0/zip-release@0.4.1
       with:
         filename: 'GrandNode-ExchangeRate-PrivatBank.zip'
         directory: 'grandnode/Grand.Web/Plugins/ExchangeRate.PrivatBank'
         exclusions: '/refs/*'
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: GrandNode-ExchangeRate-PrivatBank.zip
-        path: 'grandnode/Grand.Web/Plugins/ExchangeRate.PrivatBank/GrandNode-ExchangeRate-PrivatBank.zip'
-    - name: Test
-      run: echo github.ref
+    - name: Print Github REF
+      run: echo $env:GITHUB_REF
     - name: Create release
       uses: djnicholson/release-action@v2.4
       if: github.ref == 'master'
