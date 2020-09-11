@@ -58,7 +58,7 @@ jobs:
         name: dist-without-markdown
         path: 'grandnode/Grand.Web/Plugins/ExchangeRate.PrivatBank/GrandNode-ExchangeRate-PrivatBank.zip'
     - name: Test
-        run: echo "github.ref"
+      run: echo "github.ref"
     - name: Create release
       uses: djnicholson/release-action@v2.4
       if: github.ref == 'master'
