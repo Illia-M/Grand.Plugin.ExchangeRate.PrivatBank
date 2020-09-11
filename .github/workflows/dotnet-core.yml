@@ -51,10 +51,10 @@ jobs:
         exclusions: '/refs/*'
     - name: Create release
       uses: djnicholson/release-action@v2.4
-#      if: github.ref == 'master'
+      if: github.ref == 'master'
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         release-name: 'Latest rolling build'
-        tag-name: 'v1.0'
+#        tag-name: 'v1.0'
         asset-name: 'GrandNode-ExchangeRate-PrivatBank.zip'
         file: 'grandnode/Grand.Web/Plugins/ExchangeRate.PrivatBank/GrandNode-ExchangeRate-PrivatBank.zip'
