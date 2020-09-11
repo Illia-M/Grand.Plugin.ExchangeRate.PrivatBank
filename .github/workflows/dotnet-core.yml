@@ -50,15 +50,16 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: GrandNode-ExchangeRate-PrivatBank
-        path: 'grandnode/Grand.Web/Plugins/ExchangeRate.PrivatBank'
+        path: grandnode/Grand.Web/Plugin*/ExchangeRate.PrivatBank
+        if-no-files-found: error
     - name: Zip Release
       uses: TheDoctor0/zip-release@0.4.1
       with:
         filename: 'GrandNode-ExchangeRate-PrivatBank.zip'
         directory: 'grandnode/Grand.Web/Plugins/ExchangeRate.PrivatBank'
         exclusions: '/refs/*'
-    - name: Print Github REF
-      run: echo $env:GITHUB_REF
+    - name: Print env
+      run: printenv
     - name: Create release
       uses: djnicholson/release-action@v2.4
       if: github.ref == 'master'
