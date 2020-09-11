@@ -9,12 +9,10 @@ namespace Grand.Plugin.ExchangeRate.PrivatBank
     {
         public virtual void Register(ContainerBuilder builder, ITypeFinder typeFinder, GrandConfig config)
         {
-            builder.RegisterType<PrivatBankRateProvider>().InstancePerLifetimeScope();
+            builder.RegisterType<PrivatBankExchangeRateProvider>().InstancePerLifetimeScope();
+            builder.RegisterType<PrivatBankClient>();
         }
 
-        public int Order
-        {
-            get { return 1; }
-        }
+        public int Order => 1;
     }
 }
