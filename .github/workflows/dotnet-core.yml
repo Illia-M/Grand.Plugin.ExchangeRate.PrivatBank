@@ -22,7 +22,7 @@ jobs:
     - name: Pull GrandNode
       run: |
         mkdir grandnode
-        git clone https://github.com/grandnode/grandnode.git --branch Release-4.70 --single-branch grandnode
+        git clone https://github.com/grandnode/grandnode.git --branch develop --single-branch grandnode
         mkdir grandnode/Plugins/Grand.Plugin.ExchangeRate.PrivatBank
     - name: List pulled GrandNode files
       run: |
