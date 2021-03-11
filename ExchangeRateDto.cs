@@ -1,20 +1,19 @@
-using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Grand.Plugin.ExchangeRate.PrivatBank
 {
-    [DataContract]
     internal class ExchangeRateDto
     {
-        [DataMember(Name = "ccy")]
+        [JsonPropertyName("ccy")]
         public string Currency { get; set; }
 
-        [DataMember(Name = "base_ccy")]
+        [JsonPropertyName("base_ccy")]
         public string BaseCurrency { get; set; }
 
-        [DataMember(Name = "buy")]
+        [JsonPropertyName("buy")]
         public decimal Buy { get; set; }
 
-        [DataMember(Name = "sale")]
+        [JsonPropertyName("sale")]
         public decimal Sale { get; set; }
     }
 }

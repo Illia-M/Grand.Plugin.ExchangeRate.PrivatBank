@@ -1,24 +1,34 @@
+using Microsoft.Extensions.Logging;
 using System;
+using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace Grand.Plugin.ExchangeRate.PrivatBank
 {
     internal class PrivatBankClient
     {
+        private readonly ILogger _logger;
+
+        public PrivatBankClient(ILogger logger)
+        {
+            _logger = logger;
+        }
+
         public async Task<ExchangeRateDto[]> GetRates()
         {
             try
             {
-                var URLString = "https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5";
-                using var webClient = new System.Net.WebClient();
-                var json = await webClient.DownloadStringTaskAsync(URLString);
-                var response = JsonConvert.DeserializeObject<ExchangeRateDto[]>(json);
+                using var webClient = new HttpClient { BaseAddress = new Uri("https://api.privatbank.ua/") };
+
+                var json = await webClient.GetStringAsync("p24api/pubinfo?json&exchange&coursid=5");
+                var response = JsonSerializer.Deserialize<ExchangeRateDto[]>(json);
 
                 return response ?? throw new InvalidOperationException();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.LogError(ex, "Error on get exchange rate from Private");
                 return Array.Empty<ExchangeRateDto>();
             }
         }

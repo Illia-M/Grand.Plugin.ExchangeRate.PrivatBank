@@ -8,7 +8,7 @@ Download the Grand.Plugin.ExchangeRate.PrivatBank.zip file from apropriate GitHu
 
 ## Development status ##
 ['master'](https://github.com/Illia-M/Grand.Plugin.ExchangeRate.PrivatBank/tree/master) branch has version for latest GrandNode release v4.70
-['develop'](https://github.com/Illia-M/Grand.Plugin.ExchangeRate.PrivatBank/tree/develop) branch has version for next GrandNode release v4.80 (branch )
+['develop'](https://github.com/Illia-M/Grand.Plugin.ExchangeRate.PrivatBank/tree/develop) branch has version for next GrandNode release v4.90.0 (branch )
 
 ## How to contribute code ##
 

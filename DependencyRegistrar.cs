@@ -1,16 +1,16 @@
-using Autofac;
 using Grand.Core.Configuration;
-using Grand.Core.Infrastructure;
-using Grand.Core.Infrastructure.DependencyManagement;
+using Grand.Core.DependencyInjection;
+using Grand.Core.TypeFinders;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Grand.Plugin.ExchangeRate.PrivatBank
 {
-    public class DependencyRegistrar : IDependencyRegistrar
+    public class DependencyRegistrar : IDependencyInjection
     {
-        public virtual void Register(ContainerBuilder builder, ITypeFinder typeFinder, GrandConfig config)
+        public void Register(IServiceCollection serviceCollection, ITypeFinder typeFinder, GrandConfig config)
         {
-            builder.RegisterType<PrivatBankExchangeRateProvider>().InstancePerLifetimeScope();
-            builder.RegisterType<PrivatBankClient>();
+            serviceCollection.AddTransient<PrivatBankExchangeRateProvider>();
+            serviceCollection.AddTransient<PrivatBankClient>();
         }
 
         public int Order => 1;

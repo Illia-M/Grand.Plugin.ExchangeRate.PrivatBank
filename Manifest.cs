@@ -7,5 +7,5 @@ using Grand.Core.Plugins;
     SystemName = "CurrencyExchange.PrivatBank",
     SupportedVersion = GrandVersion.SupportedPluginVersion,
     Author = "Illia Maier",
-    Version = "1.1"
+    Version = "1.2"
 )]
