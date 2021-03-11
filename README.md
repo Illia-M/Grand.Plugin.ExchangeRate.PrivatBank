@@ -7,8 +7,8 @@ This plugin use open api from [PrivatBank](https://api.privatbank.ua/p24api/pubi
 Download the Grand.Plugin.ExchangeRate.PrivatBank.zip file from apropriate GitHub release(for your GrandNode version) and install it as described in [GrandNode documentation](https://docs.grandnode.com/plugins)
 
 ## Development status ##
-['master'](https://github.com/Illia-M/Grand.Plugin.ExchangeRate.PrivatBank/tree/master) branch has version for latest GrandNode release v4.70
-['develop'](https://github.com/Illia-M/Grand.Plugin.ExchangeRate.PrivatBank/tree/develop) branch has version for next GrandNode release v4.90.0 (branch )
+['master'](https://github.com/Illia-M/Grand.Plugin.ExchangeRate.PrivatBank/tree/master) branch has version for latest GrandNode release v4.90.X
+['develop'](https://github.com/Illia-M/Grand.Plugin.ExchangeRate.PrivatBank/tree/develop) branch has version for next GrandNode release v4.80.X (branch )
 
 ## How to contribute code ##
 
